@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project by Andrew Oakes</title>
+    <title>Taco Cat: A Coding Project by Andrew Oakes</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -32,7 +32,7 @@
     <!-- ==== Nav Section === -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="img/TreeLogo.png" class="d-inline-block align-text-center" width="30" height="24"> App Name</a>
+            <a class="navbar-brand" href="#"><img src="img/TreeLogo.png" class="d-inline-block align-text-center" width="30" height="24"> Taco Cat</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
                         <a class="nav-link active" aria-current="page" href="#">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/OakesekAo/TacoCat">Git Repo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="#">About</a>
@@ -65,17 +65,73 @@
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                        // Call Hello World
-                        function HelloWorld(){
-                            alert("Hello World");
+                        //get the string from the page
+                        //controller function
+                        function getValue(){
+                        
+                            document.getElementById("alert").classList.add("invisible");
+                        
+                            let userString = document.getElementById("userString").value;
+                        
+                            let returnObj = checkForPal(userString);
+                        
+                            displayMessage(returnObj);
+                            
+                        }
+                        
+                        
+                        // reverse the string
+                        //logic function
+                        function checkForPal(userString){
+                        
+                            //taco cat
+                            userString = userString.toLowerCase();
+                        
+                            //remove spaces and special chars
+                            let regex = /[^a-z0-9]/gi;
+                            userString = userString.replace(regex,"");
+                        
+                            let revString = [];
+                            let returnObj = {};
+                        
+                            for (let index = userString.length - 1; index >= 0; index--) {
+                                revString += userString[index];
+                                
+                            }
+                            
+                            if (revString == userString) {
+                                returnObj.msg = "Well Done! You have entered a palindrome!"
+                            }
+                            else{
+                                returnObj.msg = "Sorry! You have not entered a palindrome!"
+                            }
+                        
+                            returnObj.reversed = revString;
+                            return returnObj;
+                        
+                        }
+                        //display the reversed string to the user
+                        //view function
+                        function displayMessage(returnObj){
+                        
+                            //write to the page
+                            document.getElementById("alertHeader").innerHTML = returnObj.msg; 
+                            document.getElementById("msg").innerHTML = `Your Phrase reversed is: ${returnObj.reversed}`;   
+                               
+                            //show the alert box
+                            document.getElementById("alert").classList.remove("invisible");
                         }
                     </code>
                 </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structed in one function</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a funcion that displays an alert with a message of "Hello World"</p>
+                    <p>The Code is structed in three functions</p>
+                    <h5>getValue()</h5>
+                    <p>This function handles the value, sends it to reverseString(). When it is returned, the result is sent to displayString().</p>
+                    <h5>checkForPal()</h5>
+                    <p>This function takes the argument, converts to lower case and removes special chars and spaces. Then it does a reverse loop and assigns each posistion to a new array. It compares to see if they are the same and returns the new array. It puts it through an if statement and attaches a message to the return obj and then returns the obj.</p>
+                    <h5>displayString()</h5>
+                    <p>This function takes the returned obj and displays the value and the message as well as removing the class that controls the visibility of the alert it is using to show the results.</p>
                 </div>
             </div>
         </div>
