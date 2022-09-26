@@ -1,2 +1,2 @@
-# JsSiteTemplate
-site template for JS projects
+# TacoCat
+A JavaScript Coding challenge for palindromes
