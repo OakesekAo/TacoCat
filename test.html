@@ -1,0 +1,19 @@
+<div>
+    <button id="generate-button">Generate Superhero</button>
+  </div>
+  <div id="output"></div>
+  
+
+
+
+
+
+<script src="js/site.js"></script>
+<script>
+    button.addEventListener("click", function() {
+  const hero = getRandomSuperhero();
+  output.innerHTML = `Archetype: ${hero.archetype}<br>
+                      Primary Power: ${hero.primaryPower}<br>
+                      Secondary Power: ${hero.secondaryPower}<br>
+                      Epic Power: ${hero.epicPower}`;
+</script>
